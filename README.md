@@ -1,7 +1,5 @@
 # AI-First-CRM---HCP-Module
 An AI-powered CRM application designed for pharmaceutical sales representatives to manage Healthcare Professional (HCP) interactions using Generative AI, LangGraph, FastAPI, React, Redux, and MySQL.
-# AI First CRM - HCP Interaction Module
-
 ## Project Overview
 
 This project is an AI-based CRM application developed for managing Healthcare Professional (HCP) interactions. It allows users to enter interaction details in natural language, and the system automatically extracts the required information and fills the CRM form.
