@@ -1,20 +1,26 @@
 # AI-First-CRM---HCP-Module
 An AI-powered CRM application designed for pharmaceutical sales representatives to manage Healthcare Professional (HCP) interactions using Generative AI, LangGraph, FastAPI, React, Redux, and MySQL.
-## 🚀 Features
+# AI First CRM - HCP Interaction Module
 
-### 🤖 AI Interaction Assistant
-- Understands natural language input
-- Automatically extracts HCP interaction details
-- Uses LLM-based information extraction
+## Project Overview
+
+This project is an AI-based CRM application developed for managing Healthcare Professional (HCP) interactions. It allows users to enter interaction details in natural language, and the system automatically extracts the required information and fills the CRM form.
+
+The application is built using React for the frontend, FastAPI for the backend, LangGraph for workflow management, and MySQL for storing interaction records.
+
+---
+
+## Features
+
+### AI Interaction
+
+Users can describe an HCP meeting in normal English.
 
 Example:
 
-Input:
+Today I met Dr. John at Apollo Hospital. We discussed CardioX and planned a follow-up next Monday.
 
-Today I met Dr. John at Apollo Hospital. We discussed CardioX. Follow up next Monday.
-
-
-AI extracts:
+The application extracts:
 
 - HCP Name
 - Hospital
@@ -22,350 +28,236 @@ AI extracts:
 - Interaction Type
 - Products Discussed
 - Meeting Summary
-- Follow Up
+- Follow-up
 
-
----
-
-### ✏️ AI Edit Interaction
-
-Users can update existing information using natural language.
-
-Example:
-
-
-Actually hospital was Fortis Hospital.
-
-
-AI automatically updates only the required field.
+The extracted data is automatically displayed in the interaction form.
 
 ---
 
-### 🔍 Interaction History Search
+### Edit Existing Interaction
 
-Search previous HCP interactions:
+Users can modify previously extracted information using natural language.
 
 Example:
 
+Actually the hospital was Fortis Hospital.
+
+Only the required field is updated without changing the remaining information.
+
+---
+
+### Search Previous Interactions
+
+Users can search interaction history.
+
+Example:
 
 Show history of Dr. John
 
-
-System:
-
-- Finds previous interaction from MySQL
-- Automatically fills CRM form
-
+The application retrieves the stored interaction from the database and displays it in the form.
 
 ---
 
-### 💾 Database Management
+### Save Interaction
 
-Stores interaction records in MySQL.
-
-Stored information:
-
-- Doctor Name
-- Hospital
-- Date
-- Interaction Type
-- Products
-- Summary
-- Follow Up
-
+Users can save interaction details into the MySQL database after verification.
 
 ---
 
-### 📊 Dashboard
+### Dashboard
 
-Displays:
+The dashboard displays:
 
-- Total Doctors
+- Total HCPs
 - Total Interactions
-- Follow Ups
+- Follow-up Count
 - Products Discussed
 
-
 ---
 
-## 🏗️ Tech Stack
+## Technology Stack
 
 ### Frontend
 
-- React.js
+- React
 - Redux Toolkit
 - Material UI
 - JavaScript
 
-
 ### Backend
 
 - FastAPI
-- LangGraph
 - Python
+- LangGraph
 - Pydantic
-
 
 ### Database
 
 - MySQL
 
-
-### AI
-
-- Generative AI
-- LLM based extraction
-- LangGraph workflow
-
-
 ---
 
-# 📂 Project Structure
+## Project Structure
 
+```
+AI-First-CRM-HCP-Module
 
-ai-first-crm-hcp
+backend/
+│
+├── agents/
+├── database/
+├── routes/
+├── tools/
+├── graph.py
+└── main.py
 
+frontend/
 │
-├── backend
-│
-│── agents
-│ ├── graph.py
-│ ├── nodes.py
-│ └── edit_node.py
-│
-│── database
-│ ├── db.py
-│ ├── save_interaction.py
-│ └── search_interaction.py
-│
-│── routes
-│ ├── chat.py
-│ ├── save.py
-│ └── dashboard.py
-│
-│── tools
-│ └── hcp.py
-│
-│── main.py
-│
-│
-└── frontend
-├── src
-├── components
-├── pages
-└── redux
-
+├── src/
+│   ├── components/
+│   ├── pages/
+│   └── redux/
+```
 
 ---
-
-# ⚙️ Installation
 
 ## Backend Setup
 
-Go to backend:
+Move to backend folder
 
-
+```bash
 cd backend
+```
 
+Create virtual environment
 
-Create virtual environment:
-
-
+```bash
 python -m venv venv
+```
 
+Activate virtual environment
 
-Activate:
+Windows
 
-Windows:
-
-
+```bash
 venv\Scripts\activate
+```
 
+Install dependencies
 
-
-Install dependencies:
-
-
+```bash
 pip install -r requirements.txt
+```
 
+Run backend server
 
-
-Run server:
-
-
+```bash
 uvicorn main:app --reload --port 8001
+```
 
+Backend runs at
 
-
-Backend:
-
-
+```
 http://127.0.0.1:8001
-
-
+```
 
 ---
 
-# Frontend Setup
+## Frontend Setup
 
+Move to frontend folder
 
-Go to frontend:
-
-
+```bash
 cd frontend
+```
 
+Install packages
 
-
-Install packages:
-
-
+```bash
 npm install
+```
 
+Run application
 
-
-Run:
-
-
+```bash
 npm run dev
+```
 
+Frontend runs at
 
-
-Frontend:
-
-
+```
 http://localhost:5173
-
-
+```
 
 ---
 
-# 🗄️ Database Setup
+## Database
 
-Create database:
+Create database
 
 ```sql
 CREATE DATABASE ai_first_crm;
+```
 
-Create table:
+Create table
 
-CREATE TABLE interactions(
-id INT AUTO_INCREMENT PRIMARY KEY,
-hcp_name VARCHAR(100),
-hospital VARCHAR(100),
-interaction_date VARCHAR(50),
-interaction_type VARCHAR(50),
-products_discussed VARCHAR(100),
-meeting_summary TEXT,
-follow_up VARCHAR(100)
+```sql
+CREATE TABLE interactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    hcp_name VARCHAR(100),
+    hospital VARCHAR(100),
+    interaction_date VARCHAR(50),
+    interaction_type VARCHAR(50),
+    products_discussed VARCHAR(100),
+    meeting_summary TEXT,
+    follow_up VARCHAR(100)
 );
-🔄 Workflow
-User Input
-
-      ↓
-
-React Chat Interface
-
-      ↓
-
-FastAPI Backend
-
-      ↓
-
-LangGraph Router
-
-      ↓
-
- ┌───────────────┐
- │ Extract Node  │
- │ Edit Node     │
- │ Search Node   │
- └───────────────┘
-
-      ↓
-
-MySQL Database
-
-      ↓
-
-Auto Updated CRM Form
-📸 Screenshots
-
-Add screenshots:
-
-Dashboard
-AI Chat
-Auto Fill Form
-Database Output
-👨‍💻 Author
-
-AI First CRM Project
-
-Built using:
-React + FastAPI + LangGraph + MySQL + Generative AI
-
-⭐ Future Improvements
-Authentication
-Role Based Access
-Deployment
-Advanced Analytics
-Email Follow-up Automation
+```
 
 ---
 
-# 2) backend/requirements.txt
+## Workflow
 
-Create:
+```
+User Input
 
+↓
 
-backend/requirements.txt
+React Frontend
 
+↓
 
-Paste:
+FastAPI Backend
 
-```txt
-fastapi
-uvicorn
-langgraph
-langchain
-langchain-openai
-pydantic
-mysql-connector-python
-python-dotenv
-3) .gitignore
+↓
 
-Root folder me:
+LangGraph
 
-.gitignore
+↓
 
-Paste:
+Extract / Edit / Search
 
-# Python
-__pycache__/
-*.pyc
-venv/
+↓
 
-# Environment
-.env
+MySQL Database
 
-# Node
-node_modules/
-dist/
+↓
 
-# IDE
-.vscode/
+Updated CRM Form
+```
 
-# Logs
-*.log
-GitHub Upload Commands
+---
 
-Root folder me terminal:
+## Future Improvements
 
-git init
-git add .
-git commit -m "AI First CRM HCP Module completed"
+- User Authentication
+- Role-based Access
+- Cloud Deployment
+- Analytics Dashboard
+- Email Follow-up
 
-GitHub repo banane ke baad:
+---
 
-git branch -M main
-git remote add origin YOUR_REPO_URL
-git push -u origin main
+## Author
+
+Developed as part of the AI First CRM HCP Module assignment.
